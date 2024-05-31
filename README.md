@@ -130,11 +130,11 @@ This is my very personal and probably biased view:
 | SafeTensors             | 🗸 | 🗸 | 🗸 | 🗸 | 🗸 | ✗ | 🗸 |
 
 - Safe: Can I use a file randomly downloaded and expect not to run arbitrary code ?
-- Zero-copy: Does reading the file require more memory than the original file ?
+- Zero-copy: Does reading the file require no more memory than the original file ?
 - Lazy loading: Can I inspect the file without loading everything ? And loading only
 some tensors in it without scanning the whole file (distributed setting) ?
 - Layout control: Lazy loading, is not necessarily enough since if the information about tensors is spread out in your file, then even if the information is lazily accessible you might have to access most of your file to read the available tensors (incurring many DISK -> RAM copies). Controlling the layout to keep fast access to single tensors is important.
-- No file size limit: Is there a limit to the file size ?
+- No file size limit: Can arbitrarily large file sizes be used ?
 - Flexibility: Can I save custom code in the format and be able to use it later with zero extra code ? (~ means we can store more than pure tensors, but no custom code)
 - Bfloat16/Fp8: Does the format support native bfloat16/fp8 (meaning no weird workarounds are
 necessary)? This is becoming increasingly important in the ML world.
